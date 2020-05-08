@@ -5,13 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,30 +30,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showList();
+        makeApiPlayerCall();
     }
 
-    private void showList() {
+    private void showList(List<Player> playerDataList) {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
+
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }
-        // define an adapter
-        mAdapter = new ListAdapter(input);
+        mAdapter = new ListAdapter(playerDataList);
         recyclerView.setAdapter(mAdapter);
 
     }
 
     static final String BASE_URL = "https://www.balldontlie.io/";
 
-    private void makeApiCall(){
+    private void makeApiPlayerCall(){
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -69,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NBAApi nbaApi = retrofit.create(NBAApi.class);
 
          Call<RestApiResponse> call = nbaApi.getPlayerResponse();
-         call = nbaApi.getTeamResponse();
 
         call.enqueue(new Callback<RestApiResponse>() {
             @Override
@@ -77,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null){
 
-                    List<Player_data> playerDataList = response.body().getPlayerData();
-                    List<Player_meta> playerMetaList = response.body().getPlayerMeta();
-                    List<Team_data> teamDataList = response.body().getTeamData();
-                    List<Team_meta> teamMetaList = response.body().getTeamMeta();
-                    Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
+                    List<Player> playerDataList = response.body().getData();
+                    MetaData playerMetaList = response.body().getMeta();
+
+                    Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
+                    //showList(playerDataList);
 
                 } else {
 
@@ -100,6 +92,50 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    /*private void makeApiTeamCall(){
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        NBAApi nbaApi = retrofit.create(NBAApi.class);
+
+        Call<RestApiResponse> call = nbaApi.getTeamResponse();
+
+        call.enqueue(new Callback<RestApiResponse>() {
+            @Override
+            public void onResponse(Call<RestApiResponse> call, Response<RestApiResponse> response) {
+
+                if (response.isSuccessful() && response.body() != null){
+
+                    List<Team> teamDataList = response.body().getTeamData();
+                    MetaTeam teamMetaList = response.body().getTeamMeta();
+                    Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
+                    showList(teamDataList);
+
+                } else {
+
+                    showError();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<RestApiResponse> call, Throwable t) {
+
+                showError();
+
+            }
+        });
+
+    }*/
 
     private void showError(){
 

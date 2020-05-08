@@ -1,6 +1,6 @@
 package com.example.androidproject;
 
-public class Player_data_team {
+public class PlayerDataTeam {
 
     private Integer id;
     private String name;
@@ -11,30 +11,37 @@ public class Player_data_team {
     private String division;
 
     public Integer getId() {
+
         return id;
     }
 
     public String getName() {
+
         return name;
     }
 
     public String getAbbreviation() {
+
         return abbreviation;
     }
 
     public String getFull_name() {
+
         return full_name;
     }
 
     public String getCity() {
+
         return city;
     }
 
-    public String getConference() {
+    public String getConference()
+    {
         return conference;
     }
 
     public String getDivision() {
+
         return division;
     }
 }

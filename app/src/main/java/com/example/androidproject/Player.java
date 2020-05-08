@@ -2,7 +2,7 @@ package com.example.androidproject;
 
 import java.util.List;
 
-public class Player_data {
+public class Player {
 
     private Integer id;
     private String first_name;
@@ -11,7 +11,7 @@ public class Player_data {
     private Integer height_inches;
     private Integer weight_pounds;
     private String position;
-    private List<Player_data_team> team;
+    private PlayerDataTeam team;
 
     public Integer getId() {
         return id;
@@ -41,7 +41,7 @@ public class Player_data {
         return position;
     }
 
-    public List<Player_data_team> getTeam() {
+    public PlayerDataTeam getTeam() {
         return team;
     }
 }

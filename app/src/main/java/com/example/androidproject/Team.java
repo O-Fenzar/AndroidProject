@@ -1,6 +1,6 @@
 package com.example.androidproject;
 
-public class Team_data {
+public class Team {
 
     private Integer id;
     private String name;

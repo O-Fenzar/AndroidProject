@@ -4,24 +4,25 @@ import java.util.List;
 
 public class RestApiResponse {
 
-    List<Player_data> playerData;
-    List<Player_meta> playerMeta;
-    List<Team_data> teamData;
-    List<Team_meta> teamMeta;
+    List<Player> data;
+    MetaData meta;
+    List<Team> teamData;
+    MetaTeam teamMeta;
 
-    public List<Player_data> getPlayerData() {
-        return playerData;
+    public List<Player> getData() {
+
+        return data;
     }
 
-    public List<Player_meta> getPlayerMeta() {
-        return playerMeta;
+    public MetaData getMeta() {
+        return meta;
     }
 
-    public List<Team_data> getTeamData() {
+    public List<Team> getTeamData() {
         return teamData;
     }
 
-    public List<Team_meta> getTeamMeta() {
+    public MetaTeam getTeamMeta() {
         return teamMeta;
     }
 }
