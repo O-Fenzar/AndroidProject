@@ -11,7 +11,6 @@ public interface NBAApi {
     //Call<RestApiResponse> getPlayerResponse();
 
     @GET("api/v1/teams")
-   Call<RestApiResponse> getTeamResponse();
+    Call<RestApiResponse> getTeamResponse();
     //Call<RestApiResponse> getTeamResponse();
 }
-

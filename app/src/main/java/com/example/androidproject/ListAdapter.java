@@ -18,7 +18,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         TextView txtFooter;
         View layout;
 
-         ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
@@ -48,8 +48,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
-        View v =
-                inflater.inflate(R.layout.row_layout, parent, false);
+        View v = inflater.inflate(R.layout.row_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -59,14 +58,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         final Player currentDataPlayer = values.get(position);
-        holder.txtHeader.setText(currentDataPlayer.getId());
+        holder.txtHeader.setText(String.valueOf(currentDataPlayer.getId()));
         holder.txtHeader.setText(currentDataPlayer.getFirst_name());
         holder.txtHeader.setText(currentDataPlayer.getLast_name());
         holder.txtHeader.setText(currentDataPlayer.getPosition());
 
-        holder.txtFooter.setText(currentDataPlayer.getHeight_feet());
-        holder.txtFooter.setText(currentDataPlayer.getHeight_inches());
-        holder.txtFooter.setText(currentDataPlayer.getWeight_pounds());
+        //holder.txtFooter.setText(String.valueOf(currentDataPlayer.getHeight_feet()));
+        //holder.txtFooter.setText(currentDataPlayer.getHeight_inches());
+        //holder.txtFooter.setText(currentDataPlayer.getWeight_pounds());
     }
 
 

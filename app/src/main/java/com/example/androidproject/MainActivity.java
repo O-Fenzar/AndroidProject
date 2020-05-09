@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -61,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
         NBAApi nbaApi = retrofit.create(NBAApi.class);
 
-         Call<RestApiResponse> call = nbaApi.getPlayerResponse();
+        Call<RestApiResponse> call = nbaApi.getPlayerResponse();
 
         call.enqueue(new Callback<RestApiResponse>() {
+
             @Override
             public void onResponse(Call<RestApiResponse> call, Response<RestApiResponse> response) {
 
@@ -72,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     List<Player> playerDataList = response.body().getData();
                     MetaData playerMetaList = response.body().getMeta();
 
-                    Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
-                    //showList(playerDataList);
+                    //Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
+                    showList(playerDataList);
 
                 } else {
 
@@ -94,47 +96,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*private void makeApiTeamCall(){
-
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-
         NBAApi nbaApi = retrofit.create(NBAApi.class);
-
         Call<RestApiResponse> call = nbaApi.getTeamResponse();
-
         call.enqueue(new Callback<RestApiResponse>() {
             @Override
             public void onResponse(Call<RestApiResponse> call, Response<RestApiResponse> response) {
-
                 if (response.isSuccessful() && response.body() != null){
-
                     List<Team> teamDataList = response.body().getTeamData();
                     MetaTeam teamMetaList = response.body().getTeamMeta();
                     Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
                     showList(teamDataList);
-
                 } else {
-
                     showError();
-
                 }
-
             }
-
             @Override
             public void onFailure(Call<RestApiResponse> call, Throwable t) {
-
                 showError();
-
             }
         });
-
     }*/
 
     private void showError(){
