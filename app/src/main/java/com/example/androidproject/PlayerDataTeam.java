@@ -2,7 +2,7 @@ package com.example.androidproject;
 
 public class PlayerDataTeam {
 
-    private Integer id;
+    private String id;
     private String name;
     private String abbreviation;
     private String full_name;
@@ -10,7 +10,7 @@ public class PlayerDataTeam {
     private String conference;
     private String division;
 
-    public Integer getId() {
+    public String getId() {
 
         return id;
     }

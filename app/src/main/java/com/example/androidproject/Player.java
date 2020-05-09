@@ -4,16 +4,16 @@ import java.util.List;
 
 public class Player {
 
-    private Integer id;
+    private String id;
     private String first_name;
     private String last_name;
-    private Integer height_feet;
-    private Integer height_inches;
-    private Integer weight_pounds;
+    private String height_feet;
+    private String height_inches;
+    private String weight_pounds;
     private String position;
     private PlayerDataTeam team;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -25,15 +25,15 @@ public class Player {
         return last_name;
     }
 
-    public Integer getHeight_feet() {
+    public String getHeight_feet() {
         return height_feet;
     }
 
-    public Integer getHeight_inches() {
+    public String getHeight_inches() {
         return height_inches;
     }
 
-    public Integer getWeight_pounds() {
+    public String getWeight_pounds() {
         return weight_pounds;
     }
 
