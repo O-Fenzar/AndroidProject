@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidProject</string>
+    <string name="player_button_text">PLAYER</string>
+    <string name="team_button_text">TEAM</string>
+    <string name="image">image_logo</string>
+    <string name="All_player_button">All</string>
+    <string name="Retour_button">Retour</string>
 </resources>
