@@ -25,15 +25,14 @@ public class FirstFragment extends Fragment{
 
         view.findViewById(R.id.player_button).setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+
         view.findViewById(R.id.team_button).setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_ThirdFragment);

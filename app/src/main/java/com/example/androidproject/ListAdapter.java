@@ -59,6 +59,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         final Player currentDataPlayer = values.get(position);
         //holder.txtHeader.setText(String.valueOf(currentDataPlayer.getId()));
+
         String pos = currentDataPlayer.getPosition();
         String textPos = new String();
         if(pos.contains("C")){
@@ -75,35 +76,30 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.txtHeader.setText(currentDataPlayer.getFirst_name() + " " +  currentDataPlayer.getLast_name() + " " + textPos);
 
 
-       /* String feet = currentDataPlayer.getHeight_feet();
+
         String textFeet = new String();
-        if(feet == null){
-            textFeet = "unknown " ;
-        }else {
-
-            holder.txtFooter.setText(currentDataPlayer.getHeight_feet());
+        if(currentDataPlayer.getHeight_feet() == null){
+            textFeet = "noData " ;
+        }else{
+            textFeet = currentDataPlayer.getHeight_feet();
         }
 
-        String inches = currentDataPlayer.getHeight_inches();
         String textInches = new String();
-        if(inches == "null"){
-            textInches = "unknown " ;
-        }else {
-
-            holder.txtFooter.setText(currentDataPlayer.getHeight_inches());
+        if(currentDataPlayer.getHeight_inches() == null){
+            textInches = "noData " ;
+        }else{
+            textInches = currentDataPlayer.getHeight_inches();
         }
 
-        String pounds = currentDataPlayer.getWeight_pounds();
         String textPounds = new String();
-        if( pounds == "null"){
-            textPounds = "unknown " ;
-        }else {
+        if( currentDataPlayer.getWeight_pounds() == null){
+            textPounds = "noData " ;
+        }else{
+            textPounds = currentDataPlayer.getWeight_pounds();
+        }
 
-            holder.txtFooter.setText(currentDataPlayer.getWeight_pounds());
-        }*/
-
-        holder.txtFooter.setText(String.valueOf(currentDataPlayer.getHeight_feet()) + " feet " + currentDataPlayer.getHeight_inches() + " inches " + currentDataPlayer.getWeight_pounds() + " pounds ");
-        //holder.txtFooter.setText(textFeet + " feet " + textInches + " inches " + textPounds + " pounds ");
+        //holder.txtFooter.setText(currentDataPlayer.getHeight_feet() + " feets " + currentDataPlayer.getHeight_inches() + " inches " + currentDataPlayer.getWeight_pounds() + " pounds ");
+        holder.txtFooter.setText(textFeet + " feets " + textInches + " inches " + textPounds + " pounds ");
 
 
     }
