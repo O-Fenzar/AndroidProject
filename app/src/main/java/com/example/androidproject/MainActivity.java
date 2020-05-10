@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +43,28 @@ public class MainActivity extends AppCompatActivity {
                 .setLenient()
                 .create();
 
-        makeApiPlayerCall();
+         List<Player> playerDataList = getDataFromCache();
+         if(playerDataList != null){
+
+            showList(playerDataList);
+         }else{
+
+             makeApiPlayerCall();
+         }
+
+    }
+
+    private List<Player> getDataFromCache(){
+
+        String jsonPlayer = sharedPreferences.getString("jsonPlayerList", null);
+
+        if(jsonPlayer == null) {
+            return null;
+
+        }else {
+            Type listType = new TypeToken<List<Player>>(){}.getType();
+            return gson.fromJson(jsonPlayer, listType);
+        }
     }
 
     private void showList(List<Player> playerDataList) {
@@ -139,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 .putString("jsonPlayerList", jsonString)
                 .apply();
 
-        Toast.makeText(getApplicationContext(), "List Saved ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "List Saved ", Toast.LENGTH_SHORT).show();
     }
 
     private void showError(){
