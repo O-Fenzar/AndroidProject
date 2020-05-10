@@ -1,6 +1,4 @@
-package com.example.androidproject;
-
-import java.util.List;
+package com.example.androidproject.presentation.model;
 
 public class Player {
 

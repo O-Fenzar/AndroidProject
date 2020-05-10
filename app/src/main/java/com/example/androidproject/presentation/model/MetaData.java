@@ -1,6 +1,6 @@
-package com.example.androidproject;
+package com.example.androidproject.presentation.model;
 
-public class MetaTeam {
+public class MetaData {
 
     private Integer total_pages;
     private Integer current_page;
@@ -23,13 +23,13 @@ public class MetaTeam {
         return next_page;
     }
 
-    public Integer getPer_page()
-    {
+    public Integer getPer_page() {
+
         return per_page;
     }
 
-    public Integer getTotal_count()
-    {
+    public Integer getTotal_count() {
+
         return total_count;
     }
 }

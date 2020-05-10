@@ -1,8 +1,9 @@
-package com.example.androidproject;
+package com.example.androidproject.data;
+
+import com.example.androidproject.presentation.model.RestApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public interface NBAApi {
 
