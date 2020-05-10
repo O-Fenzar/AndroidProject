@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_MainActivity"
+            app:destination="@id/MainActivity" />
     </fragment>
 
     <fragment
@@ -38,5 +41,17 @@
         <action
             android:id="@+id/action_ThirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MainActivity"
+        android:name="com.example.androidproject.FirstFragment"
+        android:label="@string/main_activity_label"
+        tools:layout="@layout/activity_main">
+
+        <action
+            android:id="@+id/action_MainActivity_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+
     </fragment>
 </navigation>

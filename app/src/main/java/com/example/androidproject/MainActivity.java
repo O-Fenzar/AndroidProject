@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -24,12 +26,20 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private SharedPreferences sharedPreferences;
+    private Gson gson;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setContentView(R.layout.fragment_first);
+        sharedPreferences = getSharedPreferences("application_projet3A", Context.MODE_PRIVATE);
+
+         gson = new GsonBuilder()
+                .setLenient()
+                .create();
 
         makeApiPlayerCall();
     }
@@ -51,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeApiPlayerCall(){
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -75,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     MetaData playerMetaList = response.body().getMeta();
 
                     //Toast.makeText(getApplicationContext(), "API Success ", Toast.LENGTH_SHORT).show();
+                    saveList(playerDataList);
                     showList(playerDataList);
 
                 } else {
@@ -123,6 +130,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
+
+    private void saveList(List<Player> playerDataList){
+
+        String jsonString = gson.toJson(playerDataList);
+        sharedPreferences
+                .edit()
+                .putString("jsonPlayerList", jsonString)
+                .apply();
+
+        Toast.makeText(getApplicationContext(), "List Saved ", Toast.LENGTH_SHORT).show();
+    }
 
     private void showError(){
 
