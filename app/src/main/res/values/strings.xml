@@ -15,4 +15,5 @@
     <string name="previous_player_button">Previous</string>
     <string name="All_team_button">All</string>
     <string name="previous_team_button">Previous</string>
+    <string name="detail_text_description">Ecran Detail</string>
 </resources>

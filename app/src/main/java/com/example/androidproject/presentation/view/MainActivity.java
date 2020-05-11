@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.example.androidproject.R;
 import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.controller.MainController;
 import com.example.androidproject.presentation.model.Player;
+import com.example.androidproject.presentation.model.PlayerDataTeam;
 
 import java.util.List;
 
@@ -56,13 +58,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void showError(){
-
             Toast.makeText(getApplicationContext(), "API Error ", Toast.LENGTH_SHORT).show();
         }
 
     public void navigateToDetails(Player player) {
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        myIntent.putExtra("playerKey", Singletons.getGson().toJson(player));
 
-        Toast.makeText(getApplicationContext(), "TODO NAVIGATE ", Toast.LENGTH_SHORT).show();
+        MainActivity.this.startActivity(myIntent);
+
+        //Toast.makeText(getApplicationContext(), " NAVIGATE SUCCESS ", Toast.LENGTH_SHORT).show();
 
     }
 }
