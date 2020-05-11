@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.androidproject.R;
+import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.controller.MainController;
 import com.example.androidproject.presentation.model.Player;
 
@@ -34,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MainController(
                 this,
-                new GsonBuilder()
-                        .setLenient()
-                        .create(),
-                getSharedPreferences("application_projet3A", Context.MODE_PRIVATE)
+                Singletons.getGson(),
+                Singletons.getSharedPreferences(getApplicationContext())
         );
 
         controller.onStart();

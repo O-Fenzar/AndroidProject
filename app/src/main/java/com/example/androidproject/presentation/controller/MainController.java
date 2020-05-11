@@ -1,16 +1,14 @@
 package com.example.androidproject.presentation.controller;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.androidproject.Constants;
-import com.example.androidproject.data.NBAApi;
+import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.model.MetaData;
 import com.example.androidproject.presentation.model.Player;
 import com.example.androidproject.presentation.model.RestApiResponse;
 import com.example.androidproject.presentation.view.MainActivity;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -19,8 +17,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainController {
 
@@ -48,15 +44,7 @@ public class MainController {
 
         private void makeApiPlayerCall(){
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-
-            NBAApi nbaApi = retrofit.create(NBAApi.class);
-
-            Call<RestApiResponse> call = nbaApi.getPlayerResponse();
-
+            Call<RestApiResponse> call = Singletons.getNbaApi().getPlayerResponse();
             call.enqueue(new Callback<RestApiResponse>() {
 
                 @Override
