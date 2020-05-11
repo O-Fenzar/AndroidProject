@@ -13,7 +13,14 @@ import com.example.androidproject.presentation.model.Player;
 import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+
     private List<Player> values;
+    private OnItemClickListener listener;
+
+
+    public interface OnItemClickListener {
+        void onItemClick (Player item);
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -39,8 +46,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         notifyItemRemoved(position);
     }
 
-    public ListAdapter(List<Player> myDataset) {
-        values = myDataset;
+    public ListAdapter(List<Player> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
 
 
@@ -104,7 +112,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         //holder.txtFooter.setText(currentDataPlayer.getHeight_feet() + " feets " + currentDataPlayer.getHeight_inches() + " inches " + currentDataPlayer.getWeight_pounds() + " pounds ");
         holder.txtFooter.setText(textFeet + " feets " + textInches + " inches " + textPounds + " pounds ");
 
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
 
+           @Override
+           public void onClick(View v){
+               listener.onItemClick(currentDataPlayer);
+           }
+        });
     }
 
 

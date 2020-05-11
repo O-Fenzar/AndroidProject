@@ -105,7 +105,7 @@ public class MainController {
 
     public void onItemClick(Player player){
 
-
+        view.navigateToDetails(player);
     }
 
     public void onButtonAClick(){

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,8 +11,6 @@ import com.example.androidproject.R;
 import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.controller.MainController;
 import com.example.androidproject.presentation.model.Player;
-
-import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
@@ -49,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
 
-            mAdapter = new ListAdapter(playerDataList);
+            mAdapter = new ListAdapter(playerDataList, new ListAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(Player item) {
+                    controller.onItemClick(item);
+                }
+            });
             recyclerView.setAdapter(mAdapter);
         }
 
@@ -57,4 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "API Error ", Toast.LENGTH_SHORT).show();
         }
+
+    public void navigateToDetails(Player player) {
+
+        Toast.makeText(getApplicationContext(), "TODO NAVIGATE ", Toast.LENGTH_SHORT).show();
+
     }
+}
