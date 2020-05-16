@@ -6,4 +6,6 @@ public class Constants {
 
     public static String KEY_PLAYER_LIST = "jsonPlayerList";
 
+    public static String KEY_TEAM_LIST = "jsonTeamList";
+
 }

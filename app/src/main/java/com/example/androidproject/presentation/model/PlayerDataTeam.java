@@ -1,6 +1,6 @@
 package com.example.androidproject.presentation.model;
 
-public class PlayerDataTeam {
+public class PlayerDataTeam  {
 
     private String id;
     private String name;

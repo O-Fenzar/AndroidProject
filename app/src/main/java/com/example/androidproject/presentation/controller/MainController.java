@@ -7,6 +7,7 @@ import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.model.MetaData;
 import com.example.androidproject.presentation.model.Player;
 import com.example.androidproject.presentation.model.RestApiResponse;
+import com.example.androidproject.presentation.model.Team;
 import com.example.androidproject.presentation.view.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,28 +21,27 @@ import retrofit2.Response;
 
 public class MainController {
 
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
     private MainActivity view;
+    private Gson gson;
+    private SharedPreferences sharedPreferences;
 
     public MainController(MainActivity mainActivity, Gson gson, SharedPreferences sharedPreferences) {
         this.view = mainActivity;
         this.gson = gson;
         this.sharedPreferences = sharedPreferences;
+
     }
 
     public void onStart() {
 
-        List<Player> playerDataList = getDataFromCache();
-        if (playerDataList != null) {
+        List<Player> playerList = getDataFromCache();
 
-            view.showList(playerDataList);
-        } else {
-
+        if(playerList != null){
+            view.showList(playerList);
+        }else{
             makeApiPlayerCall();
         }
     }
-
         private void makeApiPlayerCall(){
 
             Call<RestApiResponse> call = Singletons.getNbaApi().getPlayerResponse();
@@ -65,16 +65,12 @@ public class MainController {
 
                 @Override
                 public void onFailure(Call<RestApiResponse> call, Throwable t) {
-
                     view.showError();
                 }
             });
-
-
-
         }
 
-    private void saveList(List<Player> playerDataList){
+    private void saveList(List<Player> playerDataList) {
 
         String jsonString = gson.toJson(playerDataList);
         sharedPreferences
@@ -85,38 +81,29 @@ public class MainController {
         //Toast.makeText(getApplicationContext(), "List Saved ", Toast.LENGTH_SHORT).show();
     }
 
-        private List<Player> getDataFromCache(){
+    private List<Player> getDataFromCache() {
 
-            String jsonPlayer = sharedPreferences.getString(Constants.KEY_PLAYER_LIST, null);
+        String jsonPlayer = sharedPreferences.getString(Constants.KEY_PLAYER_LIST, null);
 
-            if(jsonPlayer == null) {
-                return null;
+        if (jsonPlayer == null) {
+            return null;
 
-            }else {
-                Type listType = new TypeToken<List<Player>>(){}.getType();
-                return gson.fromJson(jsonPlayer, listType);
-            }
+        } else {
+            Type listType = new TypeToken<List<Player>>() {
+            }.getType();
+            return gson.fromJson(jsonPlayer, listType);
         }
-
-
-
-
-
+    }
 
     public void onItemClick(Player player){
-
         view.navigateToDetails(player);
     }
 
     public void onButtonAClick(){
 
-
     }
 
     public void onButtonBClick(){
 
-
     }
-
-
 }

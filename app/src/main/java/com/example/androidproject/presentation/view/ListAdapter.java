@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidproject.R;
 import com.example.androidproject.presentation.model.Player;
+import com.example.androidproject.presentation.model.Team;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private List<Player> values;
     private OnItemClickListener listener;
-
 
     public interface OnItemClickListener {
         void onItemClick (Player item);
@@ -50,7 +50,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.values = myDataset;
         this.listener = listener;
     }
-
 
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(

@@ -17,8 +17,8 @@ public class Singletons {
     private static NBAApi nbaApiInstance;
     private static SharedPreferences sharedPreferencesInstance;
 
-
     public static Gson getGson(){
+
         if(gsonInstance == null){
             gsonInstance = new GsonBuilder()
                     .setLenient()
@@ -48,5 +48,4 @@ public class Singletons {
         }
         return sharedPreferencesInstance;
     }
-
 }

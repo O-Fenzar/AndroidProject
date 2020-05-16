@@ -12,7 +12,7 @@ import com.example.androidproject.R;
 import com.example.androidproject.Singletons;
 import com.example.androidproject.presentation.controller.MainController;
 import com.example.androidproject.presentation.model.Player;
-import com.example.androidproject.presentation.model.PlayerDataTeam;
+import com.example.androidproject.presentation.model.Team;
 
 import java.util.List;
 
@@ -25,18 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
     private MainController controller;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //setContentView(R.layout.fragment_first);
 
-        controller = new MainController(
-                this,
-                Singletons.getGson(),
-                Singletons.getSharedPreferences(getApplicationContext())
-        );
+            controller = new MainController(
+             this,
+             Singletons.getGson(),
+             Singletons.getSharedPreferences(getApplicationContext())
+     );
 
         controller.onStart();
     }
@@ -44,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
-
             layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
 
             mAdapter = new ListAdapter(playerDataList, new ListAdapter.OnItemClickListener() {
+
                 @Override
                 public void onItemClick(Player item) {
                     controller.onItemClick(item);

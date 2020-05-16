@@ -1,19 +1,14 @@
 <resources>
     <string name="app_name">AndroidProject</string>
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="main_activity_label">Main Activity</string>
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="third_fragment_label">Third Fragment</string>
 
-
-    <string name="player_button_text">PLAYER</string>
-    <string name="team_button_text">TEAM</string>
-    <string name="image">image_logo</string>
-    <string name="All_player_button">All</string>
-    <string name="previous_player_button">Previous</string>
-    <string name="All_team_button">All</string>
-    <string name="previous_team_button">Previous</string>
-    <string name="detail_text_description">Ecran Detail</string>
+    <string name="name_text_description"> Name </string>
+    <string name="full_name_text_description"> Full Name</string>
+    <string name="abbreviation_text_description"> Abbr </string>
+    <string name="city_text_description">City</string>
+    <string name="conference_text_description">Conference</string>
+    <string name="division_text_description">Division</string>
 </resources>
