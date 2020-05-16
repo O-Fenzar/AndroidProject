@@ -5,10 +5,18 @@
     <!-- Strings used for fragments for navigation -->
     <string name="main_activity_label">Main Activity</string>
 
+    <string name="team_detail_text_description"> Team Details </string>
     <string name="name_text_description"> Name </string>
     <string name="full_name_text_description"> Full Name</string>
     <string name="abbreviation_text_description"> Abbr </string>
     <string name="city_text_description">City</string>
     <string name="conference_text_description">Conference</string>
     <string name="division_text_description">Division</string>
+
+
+    <string name="player_detail_text_description">Player Details</string>
+    <string name="position_text_description"> Position </string>
+    <string name="height_feet_text_description">Height Feet</string>
+    <string name="height_inches_text_description">Height Inches</string>
+    <string name="weight_pounds_text_description">Weight Pounds</string>
 </resources>

@@ -71,6 +71,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         //holder.txtHeader.setText(String.valueOf(currentDataPlayer.getId()));
 
         String pos = currentDataPlayer.getPosition();
+
+        holder.txtHeader.setText(currentDataPlayer.getFirst_name() + " " +  currentDataPlayer.getLast_name() );
+
         String textPos = new String();
         if(pos.contains("C")){
             textPos = "Pivot " ;
@@ -83,33 +86,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             textPos  = textPos + "Meneur " ;
 
         }
-        holder.txtHeader.setText(currentDataPlayer.getFirst_name() + " " +  currentDataPlayer.getLast_name() + " " + textPos);
 
-
-
-        String textFeet = new String();
-        if(currentDataPlayer.getHeight_feet() == null){
-            textFeet = "noData " ;
-        }else{
-            textFeet = currentDataPlayer.getHeight_feet();
-        }
-
-        String textInches = new String();
-        if(currentDataPlayer.getHeight_inches() == null){
-            textInches = "noData " ;
-        }else{
-            textInches = currentDataPlayer.getHeight_inches();
-        }
-
-        String textPounds = new String();
-        if( currentDataPlayer.getWeight_pounds() == null){
-            textPounds = "noData " ;
-        }else{
-            textPounds = currentDataPlayer.getWeight_pounds();
-        }
-
-        //holder.txtFooter.setText(currentDataPlayer.getHeight_feet() + " feets " + currentDataPlayer.getHeight_inches() + " inches " + currentDataPlayer.getWeight_pounds() + " pounds ");
-        holder.txtFooter.setText(textFeet + " feets " + textInches + " inches " + textPounds + " pounds ");
+        holder.txtFooter.setText(textPos);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
 
