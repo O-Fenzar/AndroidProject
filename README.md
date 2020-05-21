@@ -35,3 +35,36 @@ L'application utilise l'Api "balldontlie".
   ### Ecran Home 
   
   - Affiche la liste des joueurs avec une barre de recherche.
+  
+  
+  ![](Image_readme/HomePage.jpg)
+  
+  
+  ### Ecran du détail d'un joueur
+
+- Affiche les différentes informations sur le joueur
+ * Détail Joueur
+    * Position en match
+    * Taille
+    * Envergure de la main
+    * Poids
+  
+  * Détail de l'équipe du joueur
+    * Nom de l'équipe
+    * Ville
+    * Conférence
+    * Division
+
+
+
+ ![](Image_readme/PlayerDetail.jpg)
+ 
+ 
+ ### Filtres 
+
+Affichage obtenu avec la selection de lettre "lo"
+
+
+![](Image_readme/SearchView.jpg)
+
+  
