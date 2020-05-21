@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Search");
+        getSupportActionBar().setTitle("Search Player");
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
 
         materialSearchView = (MaterialSearchView)findViewById(R.id.search_view);

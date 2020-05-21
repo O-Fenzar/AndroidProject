@@ -7,12 +7,12 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="72dp"
+        android:layout_width="64dp"
         android:layout_height="58dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="0dp"
-        android:layout_marginRight="6dip"
+        android:layout_marginEnd="6dip"
         android:layout_marginBottom="0dp"
         android:contentDescription="TODO"
         android:src="@mipmap/ic_launcher_ball" />
@@ -21,28 +21,31 @@
         android:id="@+id/secondLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="6dp"
-        android:layout_toRightOf="@id/icon"
+        android:layout_marginEnd="6dp"
+        android:layout_toEndOf="@id/icon"
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="Description"
-        android:textSize="12sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
 
 
     <TextView
         android:id="@+id/firstLine"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/secondLine"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_toRightOf="@id/icon"
+        android:layout_above="@id/secondLine"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
-        android:textSize="16sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
 

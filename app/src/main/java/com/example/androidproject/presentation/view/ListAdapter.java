@@ -124,7 +124,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for(Player player : playerListFull){
-                    if(player.getFirst_name().toLowerCase().contains(filterPattern)){
+                    if(player.getFirst_name().toLowerCase().contains(filterPattern) || player.getLast_name().toLowerCase().contains(filterPattern)){
                         filteredList.add(player);
                     }
                 }
