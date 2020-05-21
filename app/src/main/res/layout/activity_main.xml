@@ -8,7 +8,6 @@
     tools:context=".presentation.view.MainActivity">
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
