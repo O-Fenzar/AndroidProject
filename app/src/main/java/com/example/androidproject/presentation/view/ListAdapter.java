@@ -3,20 +3,22 @@ package com.example.androidproject.presentation.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.androidproject.R;
 import com.example.androidproject.presentation.model.Player;
-import com.example.androidproject.presentation.model.Team;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements Filterable {
 
-    private List<Player> values;
+    private List<Player> playerList;
+    private List<Player> playerListFull;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -38,18 +40,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     public void add(int position, Player item) {
-        values.add(position, item);
+        playerList.add(position, item);
         notifyItemInserted(position);
     }
 
     public void remove(int position) {
-        values.remove(position);
+        playerList.remove(position);
         notifyItemRemoved(position);
     }
 
     public ListAdapter(List<Player> myDataset, OnItemClickListener listener) {
-        this.values = myDataset;
+        this.playerList = myDataset;
         this.listener = listener;
+        playerListFull = new ArrayList<>(myDataset);
     }
 
     @Override
@@ -68,7 +71,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        final Player currentDataPlayer = values.get(position);
+        final Player currentDataPlayer = playerList.get(position);
         //holder.txtHeader.setText(String.valueOf(currentDataPlayer.getId()));
 
         String pos = currentDataPlayer.getPosition();
@@ -99,11 +102,46 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return values.size();
+        return playerList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return playerFilter;
+    }
+
+    private Filter playerFilter = new Filter(){
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Player> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(playerListFull);
+            }else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for(Player player : playerListFull){
+                    if(player.getFirst_name().toLowerCase().contains(filterPattern)){
+                        filteredList.add(player);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results){
+            playerList.clear();
+            playerList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
 
 
